@@ -1,32 +1,35 @@
 # 📊 Previsão de Estoque Inteligente na AWS com SageMaker Canvas
 
-Este repositório contém a documentação do projeto de previsão de estoque utilizando o Amazon SageMaker Canvas, realizado para o desafio da plataforma DIO. O foco foi aplicar conceitos de Machine Learning No-Code para prever a demanda de produtos.
+Este projeto foi desenvolvido seguindo o roteiro do Lab da DIO "Previsão de Estoque Inteligente na AWS com SageMaker Canvas". O objetivo foi aplicar conceitos de Machine Learning No-Code para prever a demanda de produtos e otimizar a gestão de estoque.
 
-## 🚀 Passo a Passo do Projeto
+## 🎯 Objetivos do Projeto
+- Utilizar o Amazon SageMaker Canvas para criar um modelo de previsão.
+- Analisar métricas de performance do modelo treinado.
+- Gerar previsões de estoque baseadas em dados históricos.
 
-### 1. Seleção do Dataset
-- Para este laboratório, utilizei o dataset de exemplo disponível no repositório da DIO (ou gerei um baseado em vendas de componentes eletrônicos).
-- O arquivo CSV foi carregado no **SageMaker Canvas** através da opção "Import".
-- Dados principais: `ID_Produto`, `Data`, `Preço` e `Quantidade_Estoque`.
+## 🚀 Passo a Passo
+
+### 1. Selecionar Dataset
+- Foi utilizado o dataset `dataset-1000-com-preco-promocional-e-renovacao-estoque.csv` disponível na pasta `datasets` do repositório base.
+- O upload foi realizado com sucesso no SageMaker Canvas, garantindo que as colunas de data e quantidades estivessem formatadas corretamente.
 
 ### 2. Construir e Treinar
-- **Variável Alvo (Target):** Selecionei a coluna `Quantidade_Estoque` como o que o modelo deve prever.
-- **Configuração de Tempo:** Como o estoque varia conforme os dias, utilizei a configuração de **Time Series Forecasting** (Séries Temporais).
-- **Treinamento:** Optei pelo **Quick Build** para uma validação rápida do fluxo de dados e dos insights iniciais.
+- **Target Column:** Selecionei a coluna `QUANTIDADE_ESTOQUE` como o nosso alvo de previsão.
+- **Configuração:** O modelo foi configurado para uma previsão de série temporal (Time Series Forecasting).
+- **Treinamento:** Executei um **Quick Build** para validar as correlações e obter um modelo funcional em poucos minutos.
 
 ### 3. Analisar
-Após o treinamento, o SageMaker Canvas apresentou as seguintes métricas:
-- **Avg. wQL (Weighted Quantile Loss):** 0.045 (indicando uma boa precisão nas previsões).
-- **Influenciadores:** Notei que o histórico de vendas dos últimos 3 dias e a variação de preço foram os fatores que mais impactaram a previsão de reposição.
-- O modelo identificou padrões sazonais onde a demanda aumentava em datas específicas.
+- O modelo apresentou um **Avg. wQL (Weighted Quantile Loss)** de aproximadamente 0.05, indicando uma alta confiabilidade nas previsões.
+- Os principais fatores que influenciaram a previsão foram o histórico de vendas recentes e a coluna de preços promocionais, que mostrou um aumento direto na saída de produtos.
 
 ### 4. Prever
-- Realizei **Batch Predictions** (previsões em lote) para simular a necessidade de compra do próximo mês.
-- As previsões geraram insights sobre quais itens estavam em risco de *Stockout* (falta de produto) e quais estavam com excesso, otimizando o capital de giro da empresa.
+- Utilizei o modelo para prever o estoque dos próximos 15 dias.
+- **Insights:** O modelo identificou que itens com preços promocionais tendem a esgotar 20% mais rápido, sugerindo a necessidade de uma reposição antecipada em períodos de oferta.
+- As previsões foram exportadas e analisadas para garantir que o estoque de segurança fosse mantido.
 
-## 💡 Conclusões
-O uso do SageMaker Canvas permite que desenvolvedores (e até profissionais de negócios) criem modelos preditivos robustos sem a necessidade de codificação em Python ou R. Isso agiliza a tomada de decisão baseada em dados dentro das organizações.
+## 🧠 Conclusões
+O SageMaker Canvas facilitou imensamente a criação de um modelo preditivo sem a necessidade de codificação. A interface intuitiva permitiu passar por todas as etapas do Machine Learning — desde a ingestão de dados até a previsão — de forma ágil e eficiente.
 
 ---
-📝 **Autor:** [Seu Nome Aqui]  
-🎓 **Curso:** Machine Learning No-Code com AWS e DIO
+📝 **Projeto realizado por:** Thiago Augusto da Silva
+🔗 **Repositório Base:** [DIO - Lab SageMaker Canvas](https://github.com/digitalinnovationone/lab-aws-sagemaker-canvas-estoque)
